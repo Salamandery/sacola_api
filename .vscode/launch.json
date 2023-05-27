@@ -1,0 +1,15 @@
+{
+    "configurations": [
+
+        {
+            "type": "java",
+            "name": "Spring Boot-Application<sacola>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "me.dio.sacola.Application",
+            "projectName": "sacola",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}
