@@ -1,5 +1,6 @@
 package me.dio.sacola.resources.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -84,9 +85,21 @@ public class SacolaServiceImpl implements SacolaService {
             }
         }
 
+        List<Double> valorDosItens = new ArrayList<>();
+
+        for (Item itemDaSacola: itensDaSacola) {
+           double valorItemdaSacola = itemDaSacola.getProduto().getValorUnitario() * itemDaSacola.getQuantidade();
+           valorDosItens.add(valorItemdaSacola);
+        }
+
+        double valorItemdaSacola = valorDosItens.stream()
+            .mapToDouble(valorTotal -> valorTotal)
+            .sum();
+
+        sacola.setValorTotal(valorItemdaSacola);
         sacolaRepository.save(sacola);
 
-        return itemRepository.save(item);
+        return item;
     }
     
 }
